@@ -5,6 +5,14 @@ const start = async () =>{
        port: 8000,
        host:'localhost',
     });
+
+    server.route({
+        metthod:'GET',
+        path:'/hello',
+        handler: (req,h) =>{
+            return 'hello world'
+        }
+    })
     await server.start();
     console.log(`Server is listening on ${server.info.uri}`);
 }
