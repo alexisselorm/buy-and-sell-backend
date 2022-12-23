@@ -1,8 +1,16 @@
-import Hapi from "@hapi/hapi"
+import Hapi from "@hapi/hapi";
 import routes from "./routes";
-import {db} from './database'
+import {db} from './database';
+import * as admin from 'firebase-admin'
+import credentials from '../credentials.json'
+import { credential } from "firebase-admin";
+
 
 let server;
+
+admin.initializeApp({
+    credential: admin.credential.cert(credentials)
+});
 
 const start = async () =>{
     server = Hapi.server({
